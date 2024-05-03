@@ -27,6 +27,7 @@ export default function QuoteModal({ categoryId }: QuoteModalProps) {
     try {
       const response = await axios.get(`/api/quotes?categoryId=${categoryId}`);
       setQuotes(response.data);
+      setCurrentQuoteIndex(0); // Reset the current quote index when new quotes are fetched
     } catch (error) {
       console.error('Error fetching quotes:', error);
     }
