@@ -21,7 +21,7 @@ var quotes = []Quote{
 
 func main() {
 	http.HandleFunc("/api/quotes", getQuotes)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":3001", nil)
 }
 
 func getQuotes(w http.ResponseWriter, r *http.Request) {
