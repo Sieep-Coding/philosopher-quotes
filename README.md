@@ -1,4 +1,4 @@
-Philosopher Quotes
+[**Philosopher Quotes**](https://philosopher-quotes.vercel.app/) - Explore Now!
 ==================
 
 Philosopher Quotes is a web application that allows users to explore and discover inspiring quotes from various philosophical categories. 
