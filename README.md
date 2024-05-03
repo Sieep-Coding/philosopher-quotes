@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Philosopher Quotes
+==================
 
-## Getting Started
+Philosopher Quotes is a web application that allows users to explore and discover inspiring quotes from various philosophical categories. The application provides a user-friendly interface for browsing quotes by category and offers a seamless experience for reading and navigating through the quotes.
 
-First, run the development server:
+Features
+--------
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+-   Browse quotes by philosophical categories such as Stoicism, Bravery, and more.
+-   Click on a category card to view quotes specific to that category.
+-   Full-screen modal for an immersive quote reading experience.
+-   Navigate through quotes using intuitive "Previous" and "Next" buttons.
+-   Responsive design for optimal viewing on different devices.
+
+Technologies Used
+-----------------
+
+-   Next.js: A React framework for server-side rendering and building modern web applications.
+-   React: A JavaScript library for building user interfaces.
+-   TypeScript: A typed superset of JavaScript that compiles to plain JavaScript.
+-   Tailwind CSS: A utility-first CSS framework for rapidly building custom user interfaces.
+-   Go: A statically typed programming language used for building the backend server.
+-   REST API: The backend server exposes a RESTful API for retrieving quotes based on categories.
+
+## Commands
+
+```
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```
+npm run build
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+go run main.go
+```
