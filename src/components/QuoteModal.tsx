@@ -8,6 +8,7 @@ interface Quote {
   text: string;
   author: string;
   categoryId: number;
+  categoryName: string;
 }
 
 interface QuoteModalProps {
@@ -40,16 +41,22 @@ export default function QuoteModal({ categoryId }: QuoteModalProps) {
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-8">
-      <p className="text-2xl mb-4">{quotes[currentQuoteIndex]?.text}</p>
-      <div className="flex justify-between">
-        <button onClick={prevQuote} className="bg-blue-500 text-white px-4 py-2 rounded">
+    <div className="bg-white shadow-lg rounded-lg p-8">
+      <p className="quote">{quotes[currentQuoteIndex]?.text}</p>
+      <p className="author">- {quotes[currentQuoteIndex]?.author}</p>
+      <div className="flex justify-between mt-8">
+        <button
+          onClick={prevQuote}
+          className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded"
+        >
           Previous
         </button>
-        <button onClick={nextQuote} className="bg-blue-500 text-white px-4 py-2 rounded">
+        <button
+          onClick={nextQuote}
+          className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded"
+        >
           Next
         </button>
       </div>
     </div>
-  );
-}
+  )};
