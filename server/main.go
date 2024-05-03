@@ -10,8 +10,8 @@ type Quote struct {
 	ID           int    `json:"id"`
 	Text         string `json:"text"`
 	Author       string `json:"author"`
-	CategoryName string `json:categoryName`
 	CategoryID   int    `json:"categoryId"`
+	CategoryName string `json:categoryName`
 }
 
 var quotes = []Quote{
