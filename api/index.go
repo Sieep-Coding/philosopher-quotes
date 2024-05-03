@@ -1,4 +1,4 @@
-package main
+package handler
 
 import (
 	"encoding/json"
@@ -11,7 +11,7 @@ type Quote struct {
 	Text         string `json:"text"`
 	Author       string `json:"author"`
 	CategoryID   int    `json:"categoryId"`
-	CategoryName string `json:categoryName`
+	CategoryName string `json:"categoryName"`
 }
 
 var quotes = []Quote{
@@ -28,28 +28,7 @@ var quotes = []Quote{
 	// Add more quotes with their respective categoryId and categoryName
 }
 
-func main() {
-	// Adding CORS middleware
-	http.HandleFunc("/api/quotes", handleCORS(getQuotes))
-	http.ListenAndServe(":8080", nil)
-}
-
-// CORS middleware function
-func handleCORS(next http.HandlerFunc) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
-
-		if r.Method == "OPTIONS" {
-			return
-		}
-
-		next(w, r)
-	}
-}
-
-func getQuotes(w http.ResponseWriter, r *http.Request) {
+func Handler(w http.ResponseWriter, r *http.Request) {
 	categoryID := r.URL.Query().Get("categoryId")
 	if categoryID == "" {
 		http.Error(w, "Missing categoryId parameter", http.StatusBadRequest)
@@ -70,5 +49,8 @@ func getQuotes(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	json.NewEncoder(w).Encode(filteredQuotes)
 }
