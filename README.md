@@ -1,7 +1,9 @@
 Philosopher Quotes
 ==================
 
-Philosopher Quotes is a web application that allows users to explore and discover inspiring quotes from various philosophical categories. The application provides a user-friendly interface for browsing quotes by category and offers a seamless experience for reading and navigating through the quotes.
+Philosopher Quotes is a web application that allows users to explore and discover inspiring quotes from various philosophical categories. 
+
+The application provides a user-friendly interface for browsing quotes by category and offers a seamless experience for reading and navigating through the quotes.
 
 Features
 --------
