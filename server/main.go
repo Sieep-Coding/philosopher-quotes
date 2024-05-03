@@ -20,8 +20,24 @@ var quotes = []Quote{
 }
 
 func main() {
-	http.HandleFunc("/api/quotes", getQuotes)
-	http.ListenAndServe(":3001", nil)
+	// Adding CORS middleware
+	http.HandleFunc("/api/quotes", handleCORS(getQuotes))
+	http.ListenAndServe(":8080", nil)
+}
+
+// CORS middleware function
+func handleCORS(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+		if r.Method == "OPTIONS" {
+			return
+		}
+
+		next(w, r)
+	}
 }
 
 func getQuotes(w http.ResponseWriter, r *http.Request) {

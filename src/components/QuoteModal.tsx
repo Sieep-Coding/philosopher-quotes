@@ -3,12 +3,19 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+interface Quote {
+  id: number;
+  text: string;
+  author: string;
+  categoryId: number;
+}
+
 interface QuoteModalProps {
   categoryId: number;
 }
 
 export default function QuoteModal({ categoryId }: QuoteModalProps) {
-  const [quotes, setQuotes] = useState<string[]>([]);
+  const [quotes, setQuotes] = useState<Quote[]>([]);
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
 
   useEffect(() => {
@@ -34,7 +41,7 @@ export default function QuoteModal({ categoryId }: QuoteModalProps) {
 
   return (
     <div className="bg-white shadow-md rounded-lg p-8">
-      <p className="text-2xl mb-4">{quotes[currentQuoteIndex]}</p>
+      <p className="text-2xl mb-4">{quotes[currentQuoteIndex]?.text}</p>
       <div className="flex justify-between">
         <button onClick={prevQuote} className="bg-blue-500 text-white px-4 py-2 rounded">
           Previous
