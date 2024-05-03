@@ -3,6 +3,9 @@ import CategoryCard from '@/components/CategoryCard';
 const categories = [
   { id: 1, name: 'Stoic', image: '/images/stoic.jpg' },
   { id: 2, name: 'Brave', image: '/images/brave.jpg' },
+  { id: 3, name: 'Classic Philosophy', image: '/images/insperational.jpg' },
+  { id: 4, name: 'Good Life', image: '/images/brave.jpg' },
+  { id: 5, name: 'Courage', image: '/images/brave.jpg' },
   // Add more categories as needed
 ];
 
