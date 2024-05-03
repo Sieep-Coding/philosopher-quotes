@@ -2,9 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"log"
 	"net/http"
-	"os"
 	"strconv"
 )
 
@@ -30,6 +28,27 @@ var quotes = []Quote{
 	// Add more quotes with their respective categoryId and categoryName
 }
 
+func main() {
+	// Adding CORS middleware
+	http.HandleFunc("/api/quotes", handleCORS(getQuotes))
+	http.ListenAndServe(":8080", nil)
+}
+
+// CORS middleware function
+func handleCORS(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+		if r.Method == "OPTIONS" {
+			return
+		}
+
+		next(w, r)
+	}
+}
+
 func getQuotes(w http.ResponseWriter, r *http.Request) {
 	categoryID := r.URL.Query().Get("categoryId")
 	if categoryID == "" {
@@ -52,15 +71,4 @@ func getQuotes(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(filteredQuotes)
-}
-
-func main() {
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-	}
-
-	log.Printf("Server is running on port %s", port)
-	http.HandleFunc("/api/quotes", getQuotes)
-	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
