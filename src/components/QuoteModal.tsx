@@ -25,7 +25,7 @@ export default function QuoteModal({ categoryId }: QuoteModalProps) {
 
   const fetchQuotes = async () => {
     try {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/quotes?categoryId=${categoryId}`);
+      const response = await axios.get(`http://localhost:8080/api/quotes?categoryId=${categoryId}`);
       setQuotes(response.data);
     } catch (error) {
       console.error('Error fetching quotes:', error);
